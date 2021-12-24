@@ -18,16 +18,16 @@ import utils.manager.LocalDriverFactory;
 
 public class DashboardSteps {
 
-    WebDriver driver;
-    
+    ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+
     @Before
     public void before() {
-        driver = new LocalDriverFactory().createInstance("chrome");
+        driver.set(new DriverManager().getDriver());
     }
 
     @After
     public void after() {
-        driver.close();
+        driver.get().close();
     }
 
     @AfterStep
@@ -40,17 +40,17 @@ public class DashboardSteps {
 
     @Given("user navigate to dashboard")
     public void userNavigateToDashboard() {
-        driver.get("https://hrm.anhtester.com/erp/login");
+        driver.get().get("https://hrm.anhtester.com/erp/login");
         Helpers.delay(1);
-        driver.findElement(By.xpath("//input[@id='iusername']")).sendKeys("admin01");
-        driver.findElement(By.xpath("//input[@id='ipassword']")).sendKeys("123456");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        driver.get().findElement(By.xpath("//input[@id='iusername']")).sendKeys("admin01");
+        driver.get().findElement(By.xpath("//input[@id='ipassword']")).sendKeys("123456");
+        driver.get().findElement(By.xpath("//button[@type='submit']")).click();
     }
 
     @When("user click {string}")
     public void userClick(String menu) {
         Helpers.delay(4);
-        driver.findElement(By.xpath("//span[contains(text(),'" + menu + "')]")).click();
+        driver.get().findElement(By.xpath("//span[contains(text(),'" + menu + "')]")).click();
     }
 
     @Then("The user redirect to this page")

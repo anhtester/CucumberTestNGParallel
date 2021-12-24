@@ -19,16 +19,16 @@ import utils.manager.LocalDriverFactory;
 
 public class LoginSteps {
 
-    WebDriver driver;
+    ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     
     @Before
     public void before() {
-        driver = new LocalDriverFactory().createInstance("chrome");
+        driver.set(new DriverManager().getDriver());
     }
-//
+
     @After
     public void after() {
-        driver.close();
+        driver.get().close();
     }
 
     @AfterStep
@@ -42,20 +42,20 @@ public class LoginSteps {
     @Given("user navigate to url {string}")
     public void userNavigateToUrl(String url) {
         System.out.println(driver);
-        driver.get(url);
+        driver.get().get(url);
     }
 
     @When("user enter username {string} and password {string}")
     public void userEnterUsernameAndPassword(String email, String password) {
         Helpers.delay(1);
-        driver.findElement(By.xpath("//input[@id='iusername']")).sendKeys(email);
-        driver.findElement(By.xpath("//input[@id='ipassword']")).sendKeys(password);
+        driver.get().findElement(By.xpath("//input[@id='iusername']")).sendKeys(email);
+        driver.get().findElement(By.xpath("//input[@id='ipassword']")).sendKeys(password);
     }
 
     @And("click login button")
     public void clickLoginButton() {
         Helpers.delay(1);
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        driver.get().findElement(By.xpath("//button[@type='submit']")).click();
     }
 
     @Then("The user redirect to Dashboard page")
