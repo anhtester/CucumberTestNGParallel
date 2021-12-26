@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LocalDriverFactory {
 
-    static WebDriver driver;
+    private WebDriver driver;
 
     public static final int IMPLICIT_WAIT = 20;
     public static final int PAGE_LOAD_TIMEOUT = 20;
@@ -66,7 +66,7 @@ public class LocalDriverFactory {
 
     // Khởi tạo cấu hình của các Browser để đưa vào Switch Case setDriver
 
-    public static WebDriver initChromeDriver() {
+    public WebDriver initChromeDriver() {
         System.out.println("Launching Chrome browser...");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -76,7 +76,7 @@ public class LocalDriverFactory {
         return driver;
     }
 
-    public static WebDriver initFirefoxDriver() {
+    public WebDriver initFirefoxDriver() {
         System.out.println("Launching Firefox browser...");
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
@@ -86,7 +86,7 @@ public class LocalDriverFactory {
         return driver;
     }
 
-    public static WebDriver initOperaDriver() {
+    public WebDriver initOperaDriver() {
         System.out.println("Launching Opera browser...");
         WebDriverManager.operadriver().setup();
         driver = new OperaDriver();
@@ -96,7 +96,7 @@ public class LocalDriverFactory {
         return driver;
     }
 
-    public static WebDriver initEdgeDriver() {
+    public WebDriver initEdgeDriver() {
         System.out.println("Launching Edge browser...");
         WebDriverManager.edgedriver().setup();
         driver = new EdgeDriver();

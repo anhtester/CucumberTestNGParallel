@@ -1,22 +1,15 @@
 package utils.manager;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.*;
-
-import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
 
     private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
     public WebDriver getDriver() {
+        System.out.println("ThreadLocal driver: " + driver.get());
         if (driver.get() == null) {
             setWebDriver(new LocalDriverFactory().createInstance(null));
         }
