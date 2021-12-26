@@ -28,7 +28,10 @@ public class LoginSteps {
 
     @After
     public void after() {
-        driver.get().close();
+        if(driver.get() != null){
+            driver.get().close();
+        }
+
     }
 
     @AfterStep
