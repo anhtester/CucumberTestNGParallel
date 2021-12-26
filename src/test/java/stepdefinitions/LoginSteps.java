@@ -20,10 +20,11 @@ import utils.manager.LocalDriverFactory;
 public class LoginSteps {
 
     ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-    
+
     @Before
     public void before() {
         driver.set(new DriverManager().getDriver());
+        new DriverManager().getBrowserInfo();
     }
 
     @After

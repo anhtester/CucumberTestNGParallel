@@ -20,7 +20,7 @@ public class DriverManager {
         if (driver.get() == null) {
             setWebDriver(new LocalDriverFactory().createInstance(null));
         }
-        //log.debug("Getting instance of remote driver" + driver.get().getClass());
+        System.out.println("Getting instance of remote driver" + driver.get().getClass());
         return driver.get();
     }
 

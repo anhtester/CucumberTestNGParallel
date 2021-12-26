@@ -23,11 +23,14 @@ public class DashboardSteps {
     @Before
     public void before() {
         driver.set(new DriverManager().getDriver());
+        new DriverManager().getBrowserInfo();
     }
 
     @After
     public void after() {
-        driver.get().close();
+        if(driver.get() != null){
+            driver.get().close();
+        }
     }
 
     @AfterStep
