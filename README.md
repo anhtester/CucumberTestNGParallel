@@ -1,4 +1,4 @@
-# CucumberTestNGParallel
+# Error with Cucumber TestNG Parallel execution
 Selenium Java with Cucumber TestNG parallel execution.
 
 Please help me with Cucumber TestNG Parallel.
