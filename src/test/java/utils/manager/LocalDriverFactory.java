@@ -106,7 +106,7 @@ public class LocalDriverFactory {
         return driver;
     }
 
-    private static enum Browser {
+    private enum Browser {
         CHROME,
         EDGE,
         FIREFOX,

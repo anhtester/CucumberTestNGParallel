@@ -28,14 +28,7 @@ public class DriverManager {
         this.driver.set(_driver);
     }
 
-    /**
-     * Returns a string containing current browser name, its version and OS name.
-     * This method is used in the the *WebDriverListeners to change the test name.
-     */
     public String getBrowserInfo() {
-        //log.debug("Getting browser info");
-        // we have to cast WebDriver object to RemoteWebDriver here, because the first one does not have a method
-        // that would tell you which browser it is driving. (sick!)
         Capabilities cap = ((RemoteWebDriver) getDriver()).getCapabilities();
         String b = cap.getBrowserName();
         String os = cap.getPlatform().toString();
