@@ -10,9 +10,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import utils.manager.DriverManager;
+import utils.manager.LocalDriverFactory;
 
 public class ProjectSteps {
-    WebDriver driver = new DriverManager().getDriver();
+    WebDriver driver = null;
 
     @Given("the user login to system")
     public void the_user_login_to_system() {

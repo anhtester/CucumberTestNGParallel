@@ -13,12 +13,12 @@ public class DriverManager {
         if (driver.get() == null) {
             setWebDriver(new LocalDriverFactory().createInstance(null));
         }
-        System.out.println("Getting instance of remote driver" + driver.get().getClass());
+        System.out.println("Created driver: " + driver.get());
         return driver.get();
     }
 
     public void setWebDriver(WebDriver _driver) {
-        this.driver.set(_driver);
+        driver.set(_driver);
     }
 
     public String getBrowserInfo() {
