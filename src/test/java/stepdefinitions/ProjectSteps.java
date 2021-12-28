@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import cucumber.TestContext;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
@@ -12,8 +13,14 @@ import org.testng.Assert;
 import utils.manager.DriverManager;
 import utils.manager.LocalDriverFactory;
 
-public class ProjectSteps {
-    WebDriver driver = null;
+public class ProjectSteps extends BaseStepDef{
+
+    TestContext testContext;
+
+    public ProjectSteps(TestContext context){
+        super(context);
+        testContext = context;
+    }
 
     @Given("the user login to system")
     public void the_user_login_to_system() {
@@ -50,15 +57,6 @@ public class ProjectSteps {
     @Then("the project just added on Project page")
     public void the_project_just_added_on_project_page() {
         System.out.println("the_project_just_added_on_project_page");
-    }
-
-    @AfterStep
-    public void addScreenshot(Scenario scenario) {
-        //validate if scenario has failed then Screenshot
-        if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "Screenshot Failed");
-        }
     }
 
 }

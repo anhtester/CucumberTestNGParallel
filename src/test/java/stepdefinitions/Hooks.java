@@ -3,6 +3,9 @@ package stepdefinitions;
 import cucumber.TestContext;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks extends BaseStepDef {
 
@@ -16,7 +19,12 @@ public class Hooks extends BaseStepDef {
     }
 
     @After
-    public void afterScenario() {
+    public void afterScenario(Scenario scenario) {
+        //validate if scenario has failed then Screenshot
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "Screenshot Failed");
+        }
         System.out.println("Stop Driver: " + driver);
         driver.quit();
     }
