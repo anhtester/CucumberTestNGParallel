@@ -1,6 +1,6 @@
-# Error with Cucumber TestNG Parallel execution
+# Cucumber TestNG with Parallel execution
 
-Selenium Java with Cucumber TestNG parallel execution.
+Selenium Java with Cucumber TestNG with parallel execution.
 
 Source code design by Anh Tester and public for everyone to development.
 
