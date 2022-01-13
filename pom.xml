@@ -18,6 +18,12 @@
         <log4j.version>2.17.0</log4j.version>
         <gherkin.version>22.0.0</gherkin.version>
         <aspectj.version>1.9.7</aspectj.version>
+        <allure-testng.version>2.17.2</allure-testng.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <allure-environment-writer.version>1.0.0</allure-environment-writer.version>
+        <allure.cmd.download.url>
+            https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
+        </allure.cmd.download.url>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
     </properties>
@@ -114,14 +120,27 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.17.2</version>
+            <version>${allure-testng.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
-            <version>2.17.2</version>
+            <version>${allure-testng.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-attachments</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.automatedowl/allure-environment-writer -->
+        <dependency>
+            <groupId>com.github.automatedowl</groupId>
+            <artifactId>allure-environment-writer</artifactId>
+            <version>${allure-environment-writer.version}</version>
         </dependency>
 
         <dependency>
@@ -159,22 +178,22 @@
                     <reportsDirectory>test-output</reportsDirectory>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>3.0.0-M1</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.0-M1</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.10.0</version>
-            </plugin>
+<!--            <plugin>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <artifactId>maven-install-plugin</artifactId>-->
+<!--                <version>3.0.0-M1</version>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <artifactId>maven-deploy-plugin</artifactId>-->
+<!--                <version>3.0.0-M1</version>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <artifactId>maven-site-plugin</artifactId>-->
+<!--                <version>3.10.0</version>-->
+<!--            </plugin>-->
 
         </plugins>
     </build>
