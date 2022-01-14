@@ -14,7 +14,7 @@
         <selenium.java.version>4.1.1</selenium.java.version>
         <webdrivermanager.version>5.0.3</webdrivermanager.version>
         <slf4j.version>1.7.32</slf4j.version>
-        <cucumber.java.version>7.1.0</cucumber.java.version>
+        <cucumber.java.version>7.2.2</cucumber.java.version>
         <log4j.version>2.17.0</log4j.version>
         <gherkin.version>22.0.0</gherkin.version>
         <aspectj.version>1.9.7</aspectj.version>
@@ -149,6 +149,12 @@
             <version>${aspectj.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -169,7 +175,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <suiteXmlFiles>src/test/resources/runsuites/RunSuiteFeature.xml</suiteXmlFiles>
+                    <suiteXmlFiles>src/test/resources/suites/RunSuiteFeature.xml</suiteXmlFiles>
                     <rerunFailingTestsCount>1</rerunFailingTestsCount>
                     <argLine>
                         -Dfile.encoding=UTF-8
