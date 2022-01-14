@@ -69,7 +69,7 @@ public class LocalDriverFactory {
         return driver;
     }
 
-    // Khởi tạo cấu hình của các Browser để đưa vào Switch Case setDriver
+    // Khởi tạo cấu hình của các Browser để đưa vào Switch Case initDriver
 
     public WebDriver initChromeDriver() {
         System.out.println("Launching Chrome browser...");

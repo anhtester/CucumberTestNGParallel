@@ -10,10 +10,8 @@ public class TestContext {
 
     private final WebDriver driver;
     private final Map<String, Object> contextList = new HashMap<>();
-    private LocalDriverFactory localDriverFactory;
 
     public TestContext() {
-        localDriverFactory = new LocalDriverFactory();
         driver = new LocalDriverFactory().createInstance("chrome");
     }
 

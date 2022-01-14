@@ -6,9 +6,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverManager {
 
-    private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         System.out.println("ThreadLocal driver: " + driver.get());
         if (driver.get() == null) {
             setWebDriver(new LocalDriverFactory().createInstance(null));
@@ -17,15 +17,15 @@ public class DriverManager {
         return driver.get();
     }
 
-    public void setWebDriver(WebDriver _driver) {
+    public static void setWebDriver(WebDriver _driver) {
         driver.set(_driver);
     }
 
-    public String getBrowserInfo() {
+    public static String getBrowserInfo() {
         Capabilities cap = ((RemoteWebDriver) getDriver()).getCapabilities();
         String b = cap.getBrowserName();
-        String os = cap.getPlatform().toString();
-        String v = cap.getVersion();
+        String os = cap.getPlatformName().toString();
+        String v = cap.getBrowserVersion();
         return String.format("%s v:%s %s", b, v, os);
     }
 
