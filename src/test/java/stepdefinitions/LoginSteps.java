@@ -40,8 +40,8 @@ public class LoginSteps extends BaseStepDef {
 
     @Then("The user redirect to Dashboard page")
     public void theUserRedirectToDashboardPage() {
-        Helpers.delay(3);
-        //Assert.assertTrue(false, "Lỗi rồi");
+        Helpers.delay(5);
+        Assert.assertTrue(true, "Lỗi rồi");
     }
 
 }

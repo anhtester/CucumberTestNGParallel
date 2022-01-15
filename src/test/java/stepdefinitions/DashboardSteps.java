@@ -28,12 +28,13 @@ public class DashboardSteps extends BaseStepDef {
 
     @When("user click {string}")
     public void userClick(String menu) {
-        Helpers.delay(4);
+        Helpers.delay(5);
         driver.findElement(By.xpath("//span[contains(text(),'" + menu + "')]")).click();
     }
 
     @Then("The user redirect to this page")
     public void theUserRedirectToThisPage() {
+        Helpers.delay(3);
         Assert.assertTrue(true);
     }
 
