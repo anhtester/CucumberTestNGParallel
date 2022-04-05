@@ -1,4 +1,4 @@
-package utils.manager;
+package driver;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ public class DriverManager {
     public static WebDriver getDriver() {
         System.out.println("ThreadLocal driver: " + driver.get());
         if (driver.get() == null) {
-            setWebDriver(new LocalDriverFactory().createInstance(null));
+            setWebDriver(new BrowserFactory().createInstance(null));
         }
         System.out.println("Created driver: " + driver.get());
         return driver.get();

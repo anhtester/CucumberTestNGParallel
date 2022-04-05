@@ -6,16 +6,16 @@
 
     <groupId>anhtester.com</groupId>
     <artifactId>CucumberTestNGParallel</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
-        <maven.compiler.source.version>15</maven.compiler.source.version>
-        <maven.compiler.target.version>15</maven.compiler.target.version>
-        <selenium.java.version>4.1.1</selenium.java.version>
-        <webdrivermanager.version>5.0.3</webdrivermanager.version>
+        <maven.compiler.source.version>11</maven.compiler.source.version>
+        <maven.compiler.target.version>11</maven.compiler.target.version>
+        <selenium.java.version>4.1.3</selenium.java.version>
+        <webdrivermanager.version>5.1.0</webdrivermanager.version>
         <slf4j.version>1.7.32</slf4j.version>
         <cucumber.java.version>7.2.2</cucumber.java.version>
-        <log4j.version>2.17.0</log4j.version>
+        <log4j.version>2.17.2</log4j.version>
         <gherkin.version>22.0.0</gherkin.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure-testng.version>2.17.2</allure-testng.version>
@@ -42,6 +42,12 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.0.1-jre</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
@@ -87,11 +93,18 @@
             <version>${log4j.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/tech.grasshopper/extent-pdf-report -->
         <dependency>
             <groupId>tech.grasshopper</groupId>
             <artifactId>extent-pdf-report</artifactId>
-            <version>1.8.0</version>
+            <version>2.1.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.vimalselvam/cucumber-extentsreport -->
@@ -106,14 +119,6 @@
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.0.9</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
-        <dependency>
-            <groupId>tech.grasshopper</groupId>
-            <artifactId>extentreports-cucumber7-adapter</artifactId>
-            <version>1.1.0</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
@@ -184,22 +189,30 @@
                     <reportsDirectory>test-output</reportsDirectory>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <artifactId>maven-jar-plugin</artifactId>-->
-<!--                <version>3.2.0</version>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <artifactId>maven-install-plugin</artifactId>-->
-<!--                <version>3.0.0-M1</version>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <artifactId>maven-deploy-plugin</artifactId>-->
-<!--                <version>3.0.0-M1</version>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <artifactId>maven-site-plugin</artifactId>-->
-<!--                <version>3.10.0</version>-->
-<!--            </plugin>-->
+
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.3.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>CucumberTestNGParallel</projectName>
+                            <skip>false</skip>
+                            <outputDirectory>reports/cucumber-reports</outputDirectory>
+                            <inputDirectory>target/cucumber-reports</inputDirectory>
+                            <jsonFiles>
+                                <param>**/*.json</param>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>

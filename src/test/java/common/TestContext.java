@@ -1,7 +1,7 @@
-package cucumber;
+package common;
 
 import org.openqa.selenium.WebDriver;
-import utils.manager.LocalDriverFactory;
+import driver.BrowserFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ public class TestContext {
     private final Map<String, Object> contextList = new HashMap<>();
 
     public TestContext() {
-        driver = new LocalDriverFactory().createInstance("chrome");
+        driver = new BrowserFactory().createInstance("chrome");
     }
 
     public Object getContext(String key) {

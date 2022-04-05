@@ -1,15 +1,15 @@
 package stepdefinitions;
 
-import cucumber.TestContext;
+import common.TestContext;
 import org.openqa.selenium.WebDriver;
 import report.AllureManager;
 
-public class BaseStepDef {
+public class BaseSteps {
 
     protected WebDriver driver = null;
     protected TestContext testContext;
 
-    public BaseStepDef(TestContext context) {
+    public BaseSteps(TestContext context) {
         driver = context.getDriver();
         testContext = context;
         AllureManager.setAllureEnvironmentInformation();

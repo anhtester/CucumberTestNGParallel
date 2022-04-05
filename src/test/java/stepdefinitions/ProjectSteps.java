@@ -1,12 +1,12 @@
 package stepdefinitions;
 
-import cucumber.TestContext;
+import common.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-public class ProjectSteps extends BaseStepDef{
+public class ProjectSteps extends BaseSteps {
 
     TestContext testContext;
 

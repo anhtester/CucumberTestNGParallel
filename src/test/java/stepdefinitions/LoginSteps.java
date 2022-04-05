@@ -1,6 +1,6 @@
 package stepdefinitions;
 
-import cucumber.TestContext;
+import common.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,9 +8,9 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import utils.helpers.Helpers;
+import utils.WebUI;
 
-public class LoginSteps extends BaseStepDef {
+public class LoginSteps extends BaseSteps {
 
     TestContext testContext;
 
@@ -27,20 +27,20 @@ public class LoginSteps extends BaseStepDef {
 
     @When("user enter username {string} and password {string}")
     public void userEnterUsernameAndPassword(String email, String password) {
-        Helpers.delay(1);
+        WebUI.sleep(1);
         driver.findElement(By.xpath("//input[@id='iusername']")).sendKeys(email);
         driver.findElement(By.xpath("//input[@id='ipassword']")).sendKeys(password);
     }
 
     @And("click login button")
     public void clickLoginButton() {
-        Helpers.delay(1);
+        WebUI.sleep(1);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
     }
 
     @Then("The user redirect to Dashboard page")
     public void theUserRedirectToDashboardPage() {
-        Helpers.delay(5);
+        WebUI.sleep(5);
         Assert.assertTrue(true, "Lỗi rồi");
     }
 

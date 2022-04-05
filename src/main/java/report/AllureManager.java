@@ -7,7 +7,7 @@ import org.openqa.selenium.OutputType;
 import static org.openqa.selenium.OutputType.BYTES;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import utils.manager.DriverManager;
+import driver.DriverManager;
 
 public class AllureManager {
 
@@ -18,8 +18,8 @@ public class AllureManager {
         AllureEnvironmentWriter.allureEnvironmentWriter(
                 ImmutableMap.<String, String>builder().
                         put("Target execution", "Local").
-                        put("Headless mode", "False").
-                        put("Local browser", "Chrome v97").
+                        put("Headless mode", "false").
+                        put("Local browser", "Chrome v100").
                         build());
     }
 

@@ -1,8 +1,8 @@
-package utils.helpers;
+package utils;
 
-public class Helpers {
+public class WebUI {
 
-    public static void delay(int second){
+    public static void sleep(long second){
         try {
             Thread.sleep(second * 1000);
         } catch (InterruptedException e) {
